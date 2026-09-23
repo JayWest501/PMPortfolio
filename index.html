@@ -879,6 +879,113 @@ body:hover .cursor-light{opacity:1}
   }
 }
 
+
+/* Final UX polish */
+.career-trajectory{
+  display:grid;
+  grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;
+  gap:10px;
+  align-items:center;
+  margin-bottom:20px;
+}
+.career-step{
+  border:1px solid var(--rule);
+  background:rgba(255,255,255,.45);
+  padding:14px 12px;
+  min-height:92px;
+  transition:.22s ease;
+}
+.career-step:hover{
+  transform:translateY(-4px);
+  background:#fff;
+  border-color:var(--accent);
+}
+.career-step span{
+  display:block;
+  font:500 9px/1 "DM Mono",monospace;
+  color:var(--accent);
+  margin-bottom:10px;
+}
+.career-step b{
+  display:block;
+  font-size:12px;
+  margin-bottom:5px;
+}
+.career-step small{
+  display:block;
+  color:var(--muted);
+  font-size:9px;
+  line-height:1.45;
+}
+.career-connector{
+  color:var(--accent);
+  font-size:18px;
+  text-align:center;
+}
+.cap{
+  position:relative;
+  overflow:hidden;
+}
+.cap-evidence{
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid var(--rule);
+  font:500 9px/1.5 "DM Mono",monospace;
+  color:var(--accent);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  opacity:0;
+  transform:translateY(8px);
+  max-height:0;
+  transition:opacity .22s ease, transform .22s ease, max-height .28s ease;
+}
+.cap:hover .cap-evidence,
+.cap:focus-within .cap-evidence{
+  opacity:1;
+  transform:translateY(0);
+  max-height:70px;
+}
+.edge-nav{
+  width:auto !important;
+  min-width:44px;
+  height:54px !important;
+  padding:0 12px !important;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  overflow:hidden;
+  transition:width .22s ease, background .2s ease, border-color .2s ease, color .2s ease, opacity .2s ease;
+}
+.edge-label{
+  max-width:0;
+  opacity:0;
+  white-space:nowrap;
+  overflow:hidden;
+  font:500 9px/1 "DM Mono",monospace;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  transition:max-width .22s ease, opacity .18s ease;
+}
+.edge-nav:hover .edge-label{
+  max-width:120px;
+  opacity:1;
+}
+.edge-arrow{
+  font-size:18px;
+  line-height:1;
+}
+.edge-prev{left:14px}
+.edge-next{right:14px}
+@media(max-width:900px){
+  .career-trajectory{grid-template-columns:1fr 1fr}
+  .career-connector{display:none}
+  .edge-label{display:none}
+  .edge-nav{width:38px !important;min-width:38px;padding:0 !important;justify-content:center}
+}
+@media(max-width:620px){
+  .career-trajectory{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
@@ -890,8 +997,8 @@ body:hover .cursor-light{opacity:1}
     <a class="top-cta" href="mailto:jonathanwest501@gmail.com">Get in touch</a>
   </header>
 
-  <button id="prevPage" class="edge-nav" aria-label="Previous page">‹</button>
-  <button id="nextPage" class="edge-nav" aria-label="Next page">›</button>
+  <button id="prevPage" class="edge-nav edge-prev" aria-label="Previous page"><span class="edge-arrow">←</span><span class="edge-label" id="prevLabel">Previous</span></button>
+  <button id="nextPage" class="edge-nav edge-next" aria-label="Next page"><span class="edge-label" id="nextLabel">Next</span><span class="edge-arrow">→</span></button>
   <div class="page-progress" aria-label="Page progress"></div>
   <div class="hint">Use ← → keys or click the page arrows</div>
 
@@ -955,7 +1062,16 @@ body:hover .cursor-light{opacity:1}
               <p>I build products and workflow tools myself, including MileStory, which keeps me close to user behavior, MVP tradeoffs, interface decisions, technical constraints, launch feedback, and iteration.</p>
             </div>
           </div>
-          <div class="fact-list">
+          <div class="career-trajectory reveal" aria-label="Career trajectory">
+              <div class="career-step"><span>01</span><b>Air Force</b><small>Leadership & accountability</small></div>
+              <div class="career-connector">→</div>
+              <div class="career-step"><span>02</span><b>Business Analysis</b><small>Requirements & systems thinking</small></div>
+              <div class="career-connector">→</div>
+              <div class="career-step"><span>03</span><b>Implementation</b><small>Customer insight & delivery</small></div>
+              <div class="career-connector">→</div>
+              <div class="career-step"><span>04</span><b>Product</b><small>Discovery, prioritization, outcomes</small></div>
+            </div>
+            <div class="fact-list">
             <div class="fact"><b>Focus</b><span>Product Management & Product Delivery</span></div>
             <div class="fact"><b>Industries</b><span>Higher Education, SaaS, Payments, Telecom</span></div>
             <div class="fact"><b>Education</b><span>MBA, Marketing Concentration</span></div>
@@ -973,12 +1089,12 @@ body:hover .cursor-light{opacity:1}
         <div class="kicker reveal">Capabilities</div>
         <h2 class="page-title reveal">What I bring to the room.</h2>
         <div class="cap-grid reveal">
-          <article class="cap"><div class="num">01</div><h3>Product Discovery</h3><p>Frame customer problems, synthesize feedback, clarify jobs-to-be-done, and translate ambiguity into product opportunities.</p></article>
-          <article class="cap"><div class="num">02</div><h3>Product Strategy</h3><p>Define the problem, product goal, MVP boundary, success criteria, and tradeoffs before a team starts building.</p></article>
-          <article class="cap"><div class="num">03</div><h3>Cross-functional Execution</h3><p>Align engineering, operations, stakeholders, and customers around scope, dependencies, decisions, and release readiness.</p></article>
-          <article class="cap"><div class="num">04</div><h3>Workflow & UX Thinking</h3><p>Map workflows, remove friction, prototype better experiences, and design around how users actually move through a task.</p></article>
-          <article class="cap"><div class="num">05</div><h3>Prioritization & Roadmapping</h3><p>Balance user value, delivery effort, risk, dependencies, and business goals when deciding what moves now versus later.</p></article>
-          <article class="cap"><div class="num">06</div><h3>Launch, Learn, Iterate</h3><p>Ship, observe real constraints and user behavior, fix what breaks, and use feedback to improve the next version.</p></article>
+          <article class="cap"><div class="num">01</div><h3>Product Discovery</h3><p>Frame customer problems, synthesize feedback, clarify jobs-to-be-done, and translate ambiguity into product opportunities.</p><div class="cap-evidence">Applied in: MileStory user problem framing + BRQ discovery workflow</div></article>
+          <article class="cap"><div class="num">02</div><h3>Product Strategy</h3><p>Define the problem, product goal, MVP boundary, success criteria, and tradeoffs before a team starts building.</p><div class="cap-evidence">Applied in: MileStory product bet, MVP boundary, and roadmap sequencing</div></article>
+          <article class="cap"><div class="num">03</div><h3>Cross-functional Execution</h3><p>Align engineering, operations, stakeholders, and customers around scope, dependencies, decisions, and release readiness.</p><div class="cap-evidence">Applied in: Nelnet delivery across customers, technical teams, and launch dependencies</div></article>
+          <article class="cap"><div class="num">04</div><h3>Workflow & UX Thinking</h3><p>Map workflows, remove friction, prototype better experiences, and design around how users actually move through a task.</p><div class="cap-evidence">Applied in: BRQ guided intake + MileStory onboarding and journey setup</div></article>
+          <article class="cap"><div class="num">05</div><h3>Prioritization & Roadmapping</h3><p>Balance user value, delivery effort, risk, dependencies, and business goals when deciding what moves now versus later.</p><div class="cap-evidence">Applied in: MileStory MVP first, social depth later</div></article>
+          <article class="cap"><div class="num">06</div><h3>Launch, Learn, Iterate</h3><p>Ship, observe real constraints and user behavior, fix what breaks, and use feedback to improve the next version.</p><div class="cap-evidence">Applied in: TestFlight, App Store review, Android testing, and release fixes</div></article>
         </div>
         <div class="meta-row" style="margin-top:22px">
           <span class="tag">Product stack</span>
@@ -998,21 +1114,15 @@ body:hover .cursor-light{opacity:1}
           <button class="work-card dark" data-go="4">
             <div class="code">Case 01 · Product in Enterprise Delivery</div>
             <h3>Higher Education Payment Experiences</h3>
-            <p>Using direct customer exposure to identify recurring pain points, workflow friction, integration needs, and product opportunities across higher education payment experiences.</p>
-            <span class="peek">Enterprise customer insight</span><span class="peek">0→1 consumer product</span><span class="peek">Internal workflow product</span><span class="arrow">↗</span>
-          </button>
+            <p>Using direct customer exposure to identify recurring pain points, workflow friction, integration needs, and product opportunities across higher education payment experiences.</p><span class="peek">Enterprise customer insight</span><span class="arrow">↗</span></button>
           <button class="work-card" data-go="6">
             <div class="code">Case 02 · Product Build</div>
             <h3>MileStory</h3>
-            <p>A social running journey app designed around race goals, progress, community, and the story behind every finish line.</p>
-            <span class="arrow">↗</span>
-          </button>
+            <p>A social running journey app designed around race goals, progress, community, and the story behind every finish line.</p><span class="peek">0→1 consumer product</span><span class="arrow">↗</span></button>
           <button class="work-card" data-go="5">
             <div class="code">Case 03 · Internal Product Concept</div>
             <h3>Business Requirements Questionnaire</h3>
-            <p>A client-friendly browser tool that standardizes discovery, saves progress, and produces implementation-ready requirements.</p>
-            <span class="arrow">↗</span>
-          </button>
+            <p>A client-friendly browser tool that standardizes discovery, saves progress, and produces implementation-ready requirements.</p><span class="peek">Internal workflow product</span><span class="arrow">↗</span></button>
         </div>
       </div>
     </section>
@@ -1397,6 +1507,22 @@ body:hover .cursor-light{opacity:1}
     return Math.max(0, Math.min(pages.length - 1, i));
   }
 
+
+  const prevLabel = document.getElementById('prevLabel');
+  const nextLabel = document.getElementById('nextLabel');
+
+  function updateEdgeLabels() {
+    const prevIndex = adjacentPageIndex(page, -1);
+    const nextIndex = adjacentPageIndex(page, 1);
+
+    if (prevLabel) {
+      prevLabel.textContent = prevIndex === page ? 'Previous' : pages[prevIndex].dataset.label;
+    }
+    if (nextLabel) {
+      nextLabel.textContent = nextIndex === page ? 'Next' : pages[nextIndex].dataset.label;
+    }
+  }
+
   function go(i) {
     page = Math.max(0, Math.min(pages.length - 1, i));
     book.style.transform = `translate3d(${-page * 100}vw,0,0)`;
@@ -1407,6 +1533,7 @@ body:hover .cursor-light{opacity:1}
     prev.style.pointerEvents = page === 0 ? 'none' : 'auto';
     next.style.opacity = page === pages.length - 1 ? '.22' : '1';
     next.style.pointerEvents = page === pages.length - 1 ? 'none' : 'auto';
+    updateEdgeLabels();
     pages[page].scrollTo({ top: 0, behavior: 'auto' });
     const title = pages[page].querySelector('.page-title, .project-copy h2, .display');
     if (title) {
