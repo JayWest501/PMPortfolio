@@ -986,6 +986,32 @@ body:hover .cursor-light{opacity:1}
   .career-trajectory{grid-template-columns:1fr}
 }
 
+
+.resume-cta{
+  text-decoration:none;
+  border:1px solid var(--rule);
+  background:rgba(255,255,255,.75);
+  color:var(--ink);
+  padding:9px 14px;
+  font-size:12px;
+  font-weight:700;
+  white-space:nowrap;
+  transition:.2s ease;
+}
+.resume-cta:hover{
+  border-color:var(--accent);
+  color:var(--accent);
+  background:#fff;
+}
+.top-actions{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+@media(max-width:620px){
+  .resume-cta{font-size:10px;padding:8px 10px}
+}
+
 </style>
 </head>
 <body>
@@ -994,7 +1020,7 @@ body:hover .cursor-light{opacity:1}
   <header class="topbar">
     <a href="#" class="brand" data-go="0">JW<b>.</b> PORTFOLIO</a>
     <nav class="chapter-nav" aria-label="Portfolio sections"></nav>
-    <a class="top-cta" href="mailto:jonathanwest501@gmail.com">Get in touch</a>
+    <div class="top-actions"><a class="resume-cta" href="Jonathan_West_Resume.pdf" target="_blank" rel="noopener">Resume</a><a class="top-cta" href="mailto:jonathanwest501@gmail.com">Get in touch</a></div>
   </header>
 
   <button id="prevPage" class="edge-nav edge-prev" aria-label="Previous page"><span class="edge-arrow">←</span><span class="edge-label" id="prevLabel">Previous</span></button>
@@ -1465,6 +1491,7 @@ body:hover .cursor-light{opacity:1}
             <a href="mailto:jonathanwest501@gmail.com"><span>Email</span><strong>↗</strong></a>
             <a href="https://www.linkedin.com/in/jonathanwest501/" target="_blank" rel="noopener"><span>LinkedIn</span><strong>↗</strong></a>
             <a href="https://github.com/JayWest501" target="_blank" rel="noopener"><span>GitHub</span><strong>↗</strong></a>
+            <a href="Jonathan_West_Resume.pdf" target="_blank" rel="noopener"><span>Resume</span><strong>↗</strong></a>
           </div>
         </div>
       </div>
