@@ -623,25 +623,25 @@ footer{padding:26px 0 42px;color:var(--muted);font-size:13px}
 <div class="learning-card">
 <span>QA SIGNAL</span>
 <h4>Password visibility was missing.</h4>
-<p>PrimeTestLab flagged the sign-in friction during structured Android device testing.</p>
+<p>PrimeTestLab flagged the sign-in friction during structured device testing.</p>
 <b>Decision → Added a password-visibility toggle.</b>
 </div>
 <div class="learning-card">
-<span>CROSS-DEVICE ISSUE</span>
-<h4>System UI obscured content on Android.</h4>
-<p>SafeAreaView was imported from the wrong package across seven screens.</p>
+<span>LAYOUT ISSUE</span>
+<h4>System UI obscured content on some devices.</h4>
+<p>SafeAreaView was imported from the wrong package across seven screens, creating layout issues across devices.</p>
 <b>Decision → Corrected the implementation across affected screens.</b>
 </div>
 <div class="learning-card">
-<span>INTERACTION ISSUE</span>
-<h4>Keyboard behavior was wrong on Android.</h4>
-<p>KeyboardAvoidingView behavior was undefined across the same seven screens.</p>
-<b>Decision → Set Android behavior to “height.”</b>
+<span>INPUT + KEYBOARD ISSUE</span>
+<h4>Keyboard behavior was inconsistent across devices.</h4>
+<p>KeyboardAvoidingView behavior was undefined across the same seven screens, creating inconsistent keyboard handling.</p>
+<b>Decision → Corrected the keyboard-avoidance behavior across the affected screens.</b>
 </div>
 <div class="learning-card">
 <span>FOLLOW-ON LEARNING</span>
-<h4>An Android fix exposed an iOS layout bug.</h4>
-<p>A height rule on an auto-sizing parent caused a related issue on iOS.</p>
+<h4>A cross-device fix exposed an additional iOS layout bug.</h4>
+<p>A height rule on an auto-sizing parent caused an additional layout issue on iOS.</p>
 <b>Decision → Reworked positioning to use top: 0 and bottom: 0.</b>
 </div>
 </div>
