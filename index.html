@@ -233,11 +233,128 @@ footer{padding:26px 0 42px;color:var(--muted);font-size:13px}
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;scroll-behavior:auto!important;transition:none!important}
 }
+
+/* ===== Final premium polish: less busy, more intentional ===== */
+.hero h1{
+  font-size:clamp(58px,7vw,104px);
+  line-height:.91;
+}
+.hero::before{
+  animation-duration:18s;
+  opacity:.82;
+}
+.orbit{
+  opacity:.5;
+  animation-duration:28s;
+}
+.section{
+  min-height:auto;
+  padding:104px 0;
+}
+.section-head{
+  margin-bottom:38px;
+}
+.section-title{
+  font-size:clamp(42px,5.15vw,72px);
+  line-height:.98;
+  max-width:1120px;
+}
+.case-copy h2{
+  font-size:clamp(42px,4.5vw,64px);
+  line-height:.98;
+}
+.project-main h3,
+.project-side h3{
+  font-size:clamp(34px,3.6vw,56px);
+}
+.project-main,
+.project-side,
+.brq-card,
+.signal,
+.flow-step,
+.path-item,
+.exp{
+  transform:none !important;
+}
+.project-main:hover,
+.project-side:hover,
+.brq-card:hover,
+.signal:hover,
+.path-item:hover,
+.exp:hover{
+  transform:translateY(-3px) !important;
+}
+.browser{
+  transform:none;
+}
+.browser:hover{
+  transform:translateY(-4px);
+}
+.reveal{
+  opacity:0;
+  transform:translateY(24px);
+  filter:none;
+  transition:opacity .6s ease,transform .6s cubic-bezier(.22,.8,.2,1);
+}
+.reveal.visible{
+  opacity:1;
+  transform:none;
+}
+.split-word{
+  opacity:1 !important;
+  transform:none !important;
+  transition:none !important;
+}
+.parallax{
+  transform:none !important;
+}
+.timeline{
+  margin-top:42px;
+}
+.timeline-item{
+  padding:22px 0;
+}
+.phone{
+  animation-duration:7s;
+}
+.signal{
+  background:rgba(255,255,255,.10);
+  border-color:rgba(255,255,255,.15);
+}
+.signal p{
+  color:rgba(255,255,255,.72);
+}
+.signal h4{
+  color:var(--orange2);
+}
+.flow-step{
+  background:#1c1c1c;
+  border:1px solid rgba(255,255,255,.08);
+}
+.about-quote{
+  box-shadow:none;
+}
+.contact{
+  min-height:auto;
+}
+.contact-shell{
+  padding:44px;
+}
+.section.dark::before,
+.contact-shell::before{
+  opacity:.72;
+}
+@media(max-width:760px){
+  .section{padding:78px 0}
+  .hero h1{font-size:clamp(50px,15vw,78px)}
+  .section-title{font-size:clamp(38px,11vw,58px)}
+  .case-copy h2{font-size:clamp(38px,10vw,54px)}
+}
+
 </style>
 </head>
 <body>
 <div id="progress"></div>
-<div class="section-wipe" id="sectionWipe"></div>
 
 <header>
   <div class="container header-inner">
@@ -257,7 +374,7 @@ footer{padding:26px 0 42px;color:var(--muted);font-size:13px}
   <div class="container hero-grid">
     <div class="reveal">
       <div class="kicker">Product Manager • Dallas, TX • Open to Remote</div>
-      <h1 data-split>I turn messy customer problems into <span>clear product bets.</span></h1>
+      <h1>I turn messy customer problems into <span>clear product bets.</span></h1>
       <p class="lead">My work blends customer insight, product strategy, workflow design, and execution. I stay close enough to the problem to know what matters, and close enough to delivery to know what actually works.</p>
       <div class="hero-actions">
         <a class="btn orange" href="#work">See the work</a>
@@ -277,16 +394,11 @@ footer{padding:26px 0 42px;color:var(--muted);font-size:13px}
   </div>
 </section>
 
-<div class="marquee"><div class="marquee-track">
-  <span>Product Discovery</span><span>Product Strategy</span><span>Workflow Design</span><span>Cross-functional Execution</span><span>Customer Insight</span><span>0→1 Product Build</span>
-  <span>Product Discovery</span><span>Product Strategy</span><span>Workflow Design</span><span>Cross-functional Execution</span><span>Customer Insight</span><span>0→1 Product Build</span>
-</div></div>
-
 <section id="work" class="section">
 <div class="section-inner container">
   <div class="section-head reveal">
     <div class="section-index">01 • Selected Work</div>
-    <h2 class="section-title" data-split>Three product stories. Three different kinds of evidence.</h2>
+    <h2 class="section-title">Three product stories. Three kinds of product evidence.</h2>
   </div>
   <div class="work-grid">
     <a href="#milestory" class="project-main reveal">
@@ -319,7 +431,7 @@ footer{padding:26px 0 42px;color:var(--muted);font-size:13px}
 <div class="section-inner container">
   <div class="section-head reveal">
     <div class="section-index">02 • MileStory</div>
-    <h2 class="section-title" data-split>The user problem was personal. The product thinking had to be disciplined.</h2>
+    <h2 class="section-title">The user problem was personal. The product thinking had to be disciplined.</h2>
   </div>
   <div class="case-layout">
     <div class="case-copy reveal">
@@ -366,12 +478,12 @@ footer{padding:26px 0 42px;color:var(--muted);font-size:13px}
 <div class="section-inner container">
   <div class="section-head reveal">
     <div class="section-index">03 • BRQ</div>
-    <h2 class="section-title" data-split>Productizing a problem that kept showing up before kickoff.</h2>
+    <h2 class="section-title">Productizing a problem that kept showing up before kickoff.</h2>
   </div>
   <div class="case-layout">
     <div class="case-copy reveal">
       <div class="kicker">Business Requirements Questionnaire</div>
-      <h2>Discovery should start with clarity, not cleanup.</h2>
+      <h2>Discovery should start with clarity.</h2>
       <p>Implementation discovery often begins with fragmented context. I reframed that operational pain as a product opportunity: make intake easier for the customer and more useful for the team.</p>
       <div class="brq-grid">
         <div class="brq-card"><h4>Problem</h4><p>Requirements, stakeholders, timelines, and readiness details arrive inconsistently.</p></div>
@@ -392,7 +504,7 @@ footer{padding:26px 0 42px;color:var(--muted);font-size:13px}
 <div class="section-inner container">
   <div class="section-head reveal">
     <div class="section-index">04 • Nelnet Campus Commerce</div>
-    <h2 class="section-title" data-split>Enterprise delivery taught me where product friction actually shows up.</h2>
+    <h2 class="section-title">Enterprise delivery taught me where product friction actually shows up.</h2>
   </div>
   <p class="section-copy reveal">My current role puts me directly inside the customer journey for higher education payment products. Repeated exposure to onboarding, integrations, testing, launch preparation, and adoption gives me a practical product lens.</p>
   <div class="nelnet-grid" style="margin-top:28px">
@@ -415,7 +527,7 @@ footer{padding:26px 0 42px;color:var(--muted);font-size:13px}
 <div class="section-inner container">
   <div class="section-head reveal">
     <div class="section-index">05 • About</div>
-    <h2 class="section-title" data-split>The path matters because it explains how I operate.</h2>
+    <h2 class="section-title">The path matters because it explains how I operate.</h2>
   </div>
   <div class="about-grid">
     <div class="path">
@@ -436,7 +548,7 @@ footer{padding:26px 0 42px;color:var(--muted);font-size:13px}
 <div class="section-inner container">
   <div class="section-head reveal">
     <div class="section-index">06 • Experience</div>
-    <h2 class="section-title" data-split>The experience behind the product thinking.</h2>
+    <h2 class="section-title">The experience behind the product thinking.</h2>
   </div>
   <div class="exp-list">
     <div class="exp reveal"><div class="date">Oct 2024 – Present</div><div><h4>Implementation Project Manager</h4><strong>Nelnet Campus Commerce</strong><p>Lead implementations for higher education payment products across configuration, testing, technical coordination, client training, stakeholder communication, and launch readiness while surfacing recurring product and process insights.</p></div></div>
@@ -473,7 +585,6 @@ const progress=document.getElementById('progress');
 const navLinks=[...document.querySelectorAll('#nav a')];
 const sections=[...document.querySelectorAll('section[id]')];
 const revealEls=[...document.querySelectorAll('.reveal')];
-const parallaxEls=[...document.querySelectorAll('.parallax')];
 
 document.querySelectorAll('[data-split]').forEach(el=>{
   const nodes=[...el.childNodes];
