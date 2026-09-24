@@ -772,6 +772,7 @@ const progress=document.getElementById('progress');
 const navLinks=[...document.querySelectorAll('#nav a')];
 const sections=[...document.querySelectorAll('section[id]')];
 const revealEls=[...document.querySelectorAll('.reveal')];
+const parallaxEls=[...document.querySelectorAll('.parallax')];
 
 document.querySelectorAll('[data-split]').forEach(el=>{
   const nodes=[...el.childNodes];
@@ -863,23 +864,38 @@ chapterSections.forEach(section=>chapterIO.observe(section));
 
 const shots=[...document.querySelectorAll('.phone-shot')];
 const dotsWrap=document.getElementById('dots');
+const prevShot=document.getElementById('prevShot');
+const nextShot=document.getElementById('nextShot');
 let shotIndex=0, timer;
-shots.forEach((_,i)=>{
-  const d=document.createElement('button');
-  d.addEventListener('click',()=>showShot(i,true));
-  dotsWrap.appendChild(d);
-});
-const dots=[...dotsWrap.children];
-function showShot(i,reset=false){
-  shotIndex=(i+shots.length)%shots.length;
-  shots.forEach((s,n)=>s.classList.toggle('active',n===shotIndex));
-  dots.forEach((d,n)=>d.classList.toggle('active',n===shotIndex));
-  if(reset)startTimer();
+
+if(shots.length && dotsWrap && prevShot && nextShot){
+  shots.forEach((_,i)=>{
+    const d=document.createElement('button');
+    d.setAttribute('aria-label',`Show MileStory screenshot ${i+1}`);
+    d.addEventListener('click',()=>showShot(i,true));
+    dotsWrap.appendChild(d);
+  });
+
+  const dots=[...dotsWrap.children];
+
+  function showShot(i,reset=false){
+    shotIndex=(i+shots.length)%shots.length;
+    shots.forEach((s,n)=>s.classList.toggle('active',n===shotIndex));
+    dots.forEach((d,n)=>d.classList.toggle('active',n===shotIndex));
+    if(reset) startTimer();
+  }
+
+  function startTimer(){
+    clearInterval(timer);
+    timer=setInterval(()=>showShot(shotIndex+1),4200);
+  }
+
+  prevShot.addEventListener('click',()=>showShot(shotIndex-1,true));
+  nextShot.addEventListener('click',()=>showShot(shotIndex+1,true));
+
+  showShot(0);
+  startTimer();
 }
-function startTimer(){clearInterval(timer);timer=setInterval(()=>showShot(shotIndex+1),4200)}
-document.getElementById('prevShot').onclick=()=>showShot(shotIndex-1,true);
-document.getElementById('nextShot').onclick=()=>showShot(shotIndex+1,true);
-showShot(0);startTimer();
 </script>
 </body>
 </html>
